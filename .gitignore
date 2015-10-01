@@ -28,3 +28,7 @@ build/
 *.out
 *.app
 ed
+
+# Vim temporary files
+*.swp
+
