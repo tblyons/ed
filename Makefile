@@ -1,6 +1,7 @@
 BIN_NAME = ed
 SRC_PATH = src
-SOURCES = src/main.cpp
+SOURCES = src/main.cpp \
+          src/IO/OutputStream.cpp
 INCLUDES = 
 CXX=clang++
 CXXFLAGS = -g -std=c++14 -Weverything -pedantic -Wno-c++98-compat
