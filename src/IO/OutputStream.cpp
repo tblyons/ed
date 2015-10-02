@@ -2,6 +2,12 @@
 
 namespace IO {
 
+OutputStream::OutputStream(int fileDescriptor)
+   : mFileDesc(fileDescriptor)
+{
+   // Intentionally left blank
+}
+
 int OutputStream::operator () (void) const
 {
    return mFileDesc;
@@ -16,13 +22,6 @@ size_t OutputStream::Write(const std::vector<uint8_t> &data) const
    }
    // COUNT is not negative
    return static_cast<size_t>(COUNT);
-}
-
-
-OutputStream::OutputStream(int fileDescriptor)
-   : mFileDesc(fileDescriptor)
-{
-   // Intentionally left blank
 }
 
 } // namespace IO

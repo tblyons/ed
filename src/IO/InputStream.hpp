@@ -1,6 +1,8 @@
 #ifndef IO_INPUT_STREAM_HPP
 #define IO_INPUT_STREAM_HPP
 
+#include <cstddef> // size_t
+#include <cstdint> // uint8_t
 #include <vector>
 
 namespace IO {
@@ -17,7 +19,7 @@ private:
    int mFileDesc;
 };
 
-}
+} // namespace IO
 
 #endif
 

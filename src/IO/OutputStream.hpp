@@ -1,9 +1,10 @@
 #ifndef IO_OUTPUT_STREAM_HPP
 #define IO_OUTPUT_STREAM_HPP
 
+#include <cstdint> // uint8_t
 #include <vector>
 
-#include <unistd.h>
+#include <unistd.h> // write()
 
 namespace IO {
 
@@ -18,7 +19,7 @@ struct OutputStream
    template <size_t SIZE>
    size_t Write(const char (&data)[SIZE]) const
    {
-      const ssize_t COUNT = write(mFileDesc, data, SIZE);
+      const auto COUNT = write(mFileDesc, data, SIZE);
       if (COUNT < 0)
       {
          throw COUNT;
