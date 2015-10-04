@@ -1,5 +1,6 @@
 #include "InputStream.hpp"
 
+#include <errno.h>
 #include <unistd.h> // read()
 
 namespace IO {
@@ -18,13 +19,16 @@ int InputStream::operator () (void) const
 std::vector<uint8_t> InputStream::Read(size_t maxBytes) const
 {
    std::vector<uint8_t> result(maxBytes);
-   const auto COUNT = read(mFileDesc, result.data(), result.size());
-   if (COUNT < 0)
-   {
-      throw COUNT;
+   auto count = read(mFileDesc, result.data(), result.size());
+   if (count < 0) {
+      if ((EAGAIN == errno) || (EWOULDBLOCK == errno)) {
+         count = 0;
+      } else {
+         throw errno;
+      }
    }
-   // COUNT is 0 or greater
-   result.resize(static_cast<size_t>(COUNT));
+   // COUNT is not negative
+   result.resize(static_cast<size_t>(count));
    return result;
 }
 
