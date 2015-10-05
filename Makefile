@@ -6,8 +6,8 @@ SOURCES = src/main.cpp \
           src/IO/Terminal.cpp
 INCLUDES = 
 CXX=clang++
-CXXFLAGS = -g -std=c++14 -Weverything -pedantic -Wno-c++98-compat
-LDFLAGS = -g
+CXXFLAGS = -g -std=c++14 -stdlib=libc++ -Weverything -pedantic -Wno-c++98-compat
+LDFLAGS = -g -stdlib=libc++ -lc++abi
 OBJECTS = $(SOURCES:$(SRC_PATH)/%.cpp=$(BUILD_PATH)/%.o)
 DEPS = $(OBJECTS:.o=.d)
 BUILD_PATH = build/debug
