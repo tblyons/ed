@@ -3,6 +3,7 @@ SRC_PATH = src
 SOURCES = src/main.cpp \
           src/IO/InputStream.cpp \
           src/IO/OutputStream.cpp \
+          src/IO/Screen.cpp \
           src/IO/Terminal.cpp
 INCLUDES = 
 CXX=clang++
